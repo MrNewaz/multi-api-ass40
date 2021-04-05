@@ -14,13 +14,13 @@ const PostDetails = () => {
       .get(`https://jsonplaceholder.typicode.com/posts/${id}`)
       .then((res) => setPostDetail(res.data))
       .catch((err) => console.log(err));
-  }, []);
+  }, [id]);
   useEffect(() => {
     axios
       .get(`https://jsonplaceholder.typicode.com/comments?postId=${id}`)
       .then((res) => setComments(res.data))
       .catch((err) => console.log(err));
-  }, []);
+  }, [id]);
 
   return (
     <Container align='center'>
