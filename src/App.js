@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { ThemeProvider } from '@material-ui/styles';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Home from './Home';
+import PostDetails from './PostDetails';
+import Theme from './Theme';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={Theme}>
+      <Router>
+        <Switch>
+          <Route exact path='/'>
+            <Home />
+          </Route>
+          <Route exact path='/post/:id'>
+            <PostDetails />
+          </Route>
+        </Switch>
+      </Router>
+    </ThemeProvider>
   );
 }
 
